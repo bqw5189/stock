@@ -26,5 +26,8 @@
         <module name="stock" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="stock" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
