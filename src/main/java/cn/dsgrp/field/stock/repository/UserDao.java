@@ -8,6 +8,8 @@ package cn.dsgrp.field.stock.repository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import cn.dsgrp.field.stock.entity.User;
 
-public interface UserDao extends PagingAndSortingRepository<User, Long> {
+import java.math.BigInteger;
+
+public interface UserDao extends PagingAndSortingRepository<User, BigInteger> {
 	User findByLoginName(String loginName);
 }

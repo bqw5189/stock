@@ -7,6 +7,7 @@ package cn.dsgrp.field.stock.functional.rest;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.math.BigInteger;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Map;
@@ -73,7 +74,7 @@ public class TaskRestFT extends BaseFunctionalTestCase {
 
 		// update
 		String id = StringUtils.substringAfterLast(createdTaskUri.toString(), "/");
-		task.setId(new Long(id));
+		task.setId(BigInteger.valueOf(Long.parseLong(id)));
 		task.setTitle(TaskData.randomTitle());
 
 		restTemplate.put(createdTaskUri, task);
@@ -108,7 +109,7 @@ public class TaskRestFT extends BaseFunctionalTestCase {
 		}
 
 		// update
-		titleBlankTask.setId(1L);
+		titleBlankTask.setId(BigInteger.valueOf(1));
 		try {
 			restTemplate.put(resourceUrl + "/1", titleBlankTask);
 			fail("Update should fail while title is blank");

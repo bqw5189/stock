@@ -5,6 +5,7 @@
  *******************************************************************************/
 package cn.dsgrp.field.stock.entity;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -19,10 +20,10 @@ import org.hibernate.validator.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.ImmutableList;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "t_user")
-public class User extends IdEntity {
+@Document
+public class User extends AbstractDocument {
 	private String loginName;
 	private String name;
 	private String plainPassword;
@@ -34,7 +35,7 @@ public class User extends IdEntity {
 	public User() {
 	}
 
-	public User(Long id) {
+	public User(BigInteger id) {
 		this.id = id;
 	}
 

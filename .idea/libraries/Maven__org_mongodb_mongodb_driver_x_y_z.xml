@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.mongodb:mongodb-driver:x.y.z">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver/x.y.z/mongodb-driver-x.y.z.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver/x.y.z/mongodb-driver-x.y.z-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver/x.y.z/mongodb-driver-x.y.z-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -5,21 +5,18 @@
  *******************************************************************************/
 package cn.dsgrp.field.stock.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-//JPA标识
-@Entity
-@Table(name = "t_task")
-public class Task extends IdEntity {
+
+@Document
+public class Task extends AbstractDocument{
 
 	private String title;
 	private String description;
+
 	private User user;
 
 	// JSR303 BeanValidator的校验规则
@@ -41,8 +38,6 @@ public class Task extends IdEntity {
 	}
 
 	// JPA 基于USER_ID列的多对一关系定义
-	@ManyToOne
-	@JoinColumn(name = "user_id")
 	public User getUser() {
 		return user;
 	}

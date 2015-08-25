@@ -5,6 +5,7 @@
  *******************************************************************************/
 package cn.dsgrp.field.stock.web.task;
 
+import java.math.BigInteger;
 import java.util.Map;
 
 import javax.servlet.ServletRequest;
@@ -62,7 +63,7 @@ public class TaskController {
 			@RequestParam(value = "sortType", defaultValue = "auto") String sortType, Model model,
 			ServletRequest request) {
 		Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
-		Long userId = getCurrentUserId();
+		BigInteger userId = getCurrentUserId();
 
 		Page<Task> tasks = taskService.getUserTask(userId, searchParams, pageNumber, pageSize, sortType);
 
@@ -127,7 +128,7 @@ public class TaskController {
 	/**
 	 * 取出Shiro中的当前用户Id.
 	 */
-	private Long getCurrentUserId() {
+	private BigInteger getCurrentUserId() {
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
 		return user.id;
 	}

@@ -59,16 +59,16 @@ public abstract class SupperService<T> {
         return new PageRequest(pageNumber, pagzSize, sort);
     }
 
-    /**
-     * 创建动态查询条件组合.
-     */
-    public Specification<T> buildSpecification(Map<String, ? extends Object> searchParams) {
-        Map<String, SearchFilter> filters = SearchFilter.parse((Map<String, Object>) searchParams);
-        @SuppressWarnings("unchecked")
-        Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        Specification<T> spec = DynamicSpecifications.bySearchFilter(filters.values(), entityClass);
-        return spec;
-    }
+//    /**
+//     * 创建动态查询条件组合.
+//     */
+//    public Specification<T> buildSpecification(Map<String, ? extends Object> searchParams) {
+//        Map<String, SearchFilter> filters = SearchFilter.parse((Map<String, Object>) searchParams);
+//        @SuppressWarnings("unchecked")
+//        Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+//        Specification<T> spec = DynamicSpecifications.bySearchFilter(filters.values(), entityClass);
+//        return spec;
+//    }
 
 
 }

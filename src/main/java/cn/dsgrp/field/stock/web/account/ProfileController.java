@@ -19,6 +19,8 @@ import cn.dsgrp.field.stock.entity.User;
 import cn.dsgrp.field.stock.service.account.AccountService;
 import cn.dsgrp.field.stock.service.account.ShiroDbRealm.ShiroUser;
 
+import java.math.BigInteger;
+
 /**
  * 用户修改自己资料的Controller.
  * 
@@ -33,7 +35,7 @@ public class ProfileController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String updateForm(Model model) {
-		Long id = getCurrentUserId();
+		BigInteger id = getCurrentUserId();
 		model.addAttribute("user", accountService.getUser(id));
 		return "account/profile";
 	}
@@ -50,8 +52,8 @@ public class ProfileController {
 	 * 因为仅update()方法的form中有id属性，因此仅在update时实际执行.
 	 */
 	@ModelAttribute
-	public void getUser(@RequestParam(value = "id", defaultValue = "-1") Long id, Model model) {
-		if (id != -1) {
+	public void getUser(@RequestParam(value = "id", defaultValue = "-1") BigInteger id, Model model) {
+		if (id.longValue() != -1) {
 			model.addAttribute("user", accountService.getUser(id));
 		}
 	}
@@ -59,7 +61,7 @@ public class ProfileController {
 	/**
 	 * 取出Shiro中的当前用户Id.
 	 */
-	private Long getCurrentUserId() {
+	private BigInteger getCurrentUserId() {
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
 		return user.id;
 	}

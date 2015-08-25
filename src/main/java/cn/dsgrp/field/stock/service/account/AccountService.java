@@ -5,6 +5,7 @@
  *******************************************************************************/
 package cn.dsgrp.field.stock.service.account;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -47,7 +48,7 @@ public class AccountService {
 		return (List<User>) userDao.findAll();
 	}
 
-	public User getUser(Long id) {
+	public User getUser(BigInteger id) {
 		return userDao.findOne(id);
 	}
 
@@ -70,21 +71,21 @@ public class AccountService {
 		userDao.save(user);
 	}
 
-	public void deleteUser(Long id) {
+	public void deleteUser(BigInteger id) {
 		if (isSupervisor(id)) {
 			logger.warn("操作员{}尝试删除超级管理员用户", getCurrentUserName());
 			throw new ServiceException("不能删除超级管理员用户");
 		}
 		userDao.delete(id);
-		taskDao.deleteByUserId(id);
+//		taskDao.deleteByUserId(id);
 
 	}
 
 	/**
 	 * 判断是否超级管理员.
 	 */
-	private boolean isSupervisor(Long id) {
-		return id == 1;
+	private boolean isSupervisor(BigInteger id) {
+		return id.longValue() == 1;
 	}
 
 	/**

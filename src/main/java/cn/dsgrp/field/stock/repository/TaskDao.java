@@ -5,19 +5,15 @@
  *******************************************************************************/
 package cn.dsgrp.field.stock.repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import cn.dsgrp.field.stock.entity.Task;
+import cn.dsgrp.field.stock.entity.User;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface TaskDao extends PagingAndSortingRepository<Task, Long>, JpaSpecificationExecutor<Task> {
+import java.util.List;
 
-	Page<Task> findByUserId(Long id, Pageable pageRequest);
+public interface TaskDao extends PagingAndSortingRepository<Task, Long>{
 
-	@Modifying
-	@Query("delete from Task task where task.user.id=?1")
-	void deleteByUserId(Long id);
+	List<Task> findByUser(User user);
+
+
 }

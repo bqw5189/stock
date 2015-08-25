@@ -5,6 +5,7 @@
  *******************************************************************************/
 package cn.dsgrp.field.stock.rest;
 
+import java.math.BigInteger;
 import java.net.URI;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class TaskRestController {
 		taskService.saveTask(task);
 
 		// 按照Restful风格约定，创建指向新任务的url, 也可以直接返回id或对象.
-		Long id = task.getId();
+		BigInteger id = task.getId();
 		URI uri = uriBuilder.path("/api/v1/task/" + id).build().toUri();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uri);

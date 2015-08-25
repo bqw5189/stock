@@ -9,6 +9,8 @@ import cn.dsgrp.field.stock.entity.Task;
 import cn.dsgrp.field.stock.entity.User;
 import org.springside.modules.test.data.RandomData;
 
+import java.math.BigInteger;
+
 /**
  * Task相关实体测试数据生成.
  * 
@@ -19,7 +21,7 @@ public class TaskData {
 	public static Task randomTask() {
 		Task task = new Task();
 		task.setTitle(randomTitle());
-		User user = new User(1L);
+		User user = new User(BigInteger.valueOf(1));
 		task.setUser(user);
 		return task;
 	}

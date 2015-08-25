@@ -5,7 +5,7 @@ package cn.dsgrp.field.stock.entity;
  *
  * Created by baiqw on 15/8/22.
  */
-public class ListedCompany extends IdEntity{
+public class ListedCompany  extends AbstractDocument{
     /**
      * 公司简名
      */

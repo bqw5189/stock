@@ -6,6 +6,7 @@
 package cn.dsgrp.field.stock.service.account;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 import javax.annotation.PostConstruct;
 
@@ -77,11 +78,11 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	 */
 	public static class ShiroUser implements Serializable {
 		private static final long serialVersionUID = -1373760761780840081L;
-		public Long id;
+		public BigInteger id;
 		public String loginName;
 		public String name;
 
-		public ShiroUser(Long id, String loginName, String name) {
+		public ShiroUser(BigInteger id, String loginName, String name) {
 			this.id = id;
 			this.loginName = loginName;
 			this.name = name;

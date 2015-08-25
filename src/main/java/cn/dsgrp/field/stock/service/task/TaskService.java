@@ -5,6 +5,7 @@
  *******************************************************************************/
 package cn.dsgrp.field.stock.service.task;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -46,12 +47,12 @@ public class TaskService {
 		return (List<Task>) taskDao.findAll();
 	}
 
-	public Page<Task> getUserTask(Long userId, Map<String, Object> searchParams, int pageNumber, int pageSize,
+	public Page<Task> getUserTask(BigInteger userId, Map<String, Object> searchParams, int pageNumber, int pageSize,
 			String sortType) {
 		PageRequest pageRequest = buildPageRequest(pageNumber, pageSize, sortType);
 		Specification<Task> spec = buildSpecification(userId, searchParams);
 
-		return taskDao.findAll(spec, pageRequest);
+		return taskDao.findAll(pageRequest);
 	}
 
 	/**
@@ -71,7 +72,7 @@ public class TaskService {
 	/**
 	 * 创建动态查询条件组合.
 	 */
-	private Specification<Task> buildSpecification(Long userId, Map<String, Object> searchParams) {
+	private Specification<Task> buildSpecification(BigInteger userId, Map<String, Object> searchParams) {
 		Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
 		filters.put("user.id", new SearchFilter("user.id", Operator.EQ, userId));
 		Specification<Task> spec = DynamicSpecifications.bySearchFilter(filters.values(), Task.class);

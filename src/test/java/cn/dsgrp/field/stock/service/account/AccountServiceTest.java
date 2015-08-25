@@ -7,6 +7,7 @@ package cn.dsgrp.field.stock.service.account;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 import org.junit.Before;
@@ -43,7 +44,7 @@ public class AccountServiceTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		ShiroTestUtils.mockSubject(new ShiroUser(3L, "foo", "Foo"));
+		ShiroTestUtils.mockSubject(new ShiroUser(BigInteger.valueOf(3), "foo", "Foo"));
 	}
 
 	@Test
@@ -78,17 +79,17 @@ public class AccountServiceTest {
 	@Test
 	public void deleteUser() {
 		// 正常删除用户.
-		accountService.deleteUser(2L);
-		Mockito.verify(mockUserDao).delete(2L);
+		accountService.deleteUser(BigInteger.valueOf(2));
+		Mockito.verify(mockUserDao).delete(BigInteger.valueOf(2));
 
 		// 删除超级管理用户抛出异常, userDao没有被执行
 		try {
-			accountService.deleteUser(1L);
+			accountService.deleteUser(BigInteger.valueOf(1));
 			failBecauseExceptionWasNotThrown(ServiceException.class);
 		} catch (ServiceException e) {
 			// expected exception
 		}
-		Mockito.verify(mockUserDao, Mockito.never()).delete(1L);
+		Mockito.verify(mockUserDao, Mockito.never()).delete(BigInteger.valueOf(1));
 	}
 
 }

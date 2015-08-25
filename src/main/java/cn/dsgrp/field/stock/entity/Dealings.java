@@ -5,7 +5,7 @@ package cn.dsgrp.field.stock.entity;
  *
  * Created by baiqw on 15/8/22.
  */
-public class Dealings extends IdEntity{
+public class Dealings extends AbstractDocument{
     public static final String NATURE_BUY = "买盘";
     public static final String NATURE_SELL = "卖盘";
     /**

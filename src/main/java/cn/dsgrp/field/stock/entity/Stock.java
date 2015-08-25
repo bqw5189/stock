@@ -1,11 +1,14 @@
 package cn.dsgrp.field.stock.entity;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * 股票
  *
  * Created by baiqw on 15/8/22.
  */
-public class Stock extends IdEntity{
+@Document
+public class Stock extends AbstractDocument{
     /**
      * 股票简称名称
      */
