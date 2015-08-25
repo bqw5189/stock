@@ -17,7 +17,7 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="cn.dsgrp.field.stock" level="INFO" />
+	<logger name="cn.dsgrp.field.stock" level="DEBUG" />
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="INFO"/>
