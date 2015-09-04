@@ -12,6 +12,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.List;
  * 沪市 A 股 列表
  * Created by baiqw on 15/8/22.
  */
+@Component
 public class SHAStockListImpl implements IStockList{
     /**
      * 上海证券交易所 A 股 列表

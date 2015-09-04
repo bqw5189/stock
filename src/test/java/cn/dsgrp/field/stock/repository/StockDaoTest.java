@@ -17,6 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StockDaoTest extends SpringContextTestCase {
     @Autowired
     StockDao stockDao;
+    @Autowired
+     MarketDao marketDao;
+
 
     @Test
     public void testCrud(){

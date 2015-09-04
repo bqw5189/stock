@@ -1,13 +1,18 @@
 package cn.dsgrp.field.stock.entity;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.math.BigInteger;
+
 /**
  * 市场信息
  * Created by baiqw on 15/8/22.
  */
+@Document
 public class Market extends AbstractDocument{
-    public static final Market SH_MARKET = new Market("沪市","sh");
-    public static final Market SH_A_MARKET = new Market("A股","6",SH_MARKET);
-    public static final Market SH_B_MARKET = new Market("B股","9",SH_MARKET);
+    public static final Market SH_MARKET = new Market(6l, "沪市","sh");
+    public static final Market SH_A_MARKET = new Market(61l, "A股","6",SH_MARKET);
+    public static final Market SH_B_MARKET = new Market(62l, "B股","9",SH_MARKET);
 
     /**
      * 市场名称
@@ -22,15 +27,20 @@ public class Market extends AbstractDocument{
      */
     private Market parentMarket;
 
-    public Market(String name, String code, Market parentMarket) {
+
+    public Market(long id,String name, String code, Market parentMarket) {
         this.name = name;
         this.code = code;
         this.parentMarket = parentMarket;
+        this.setId(BigInteger.valueOf(id));
     }
 
-    public Market(String name, String code) {
+
+
+    public Market(long id, String name, String code) {
         this.name = name;
         this.code = code;
+        this.setId(BigInteger.valueOf(id));
     }
 
     public String getName() {
