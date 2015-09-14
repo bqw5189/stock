@@ -2,7 +2,10 @@ package cn.dsgrp.field.stock.entity;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Stack;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 /**
  * 交易明细
@@ -14,7 +17,7 @@ public class DayDealings extends AbstractDocument {
     /**
      * 股票信息
      */
-    private Stack stack;
+    private Stock stock;
     /**
      * 成交日期
      */
@@ -50,12 +53,13 @@ public class DayDealings extends AbstractDocument {
      */
     private Double turnover;
 
-    public Stack getStack() {
-        return stack;
+
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setStack(Stack stack) {
-        this.stack = stack;
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 
     public String getcDate() {
@@ -117,7 +121,7 @@ public class DayDealings extends AbstractDocument {
     @Override
     public String toString() {
         return "DayDealings{" +
-                "stack=" + stack +
+                "stock=" + stock +
                 ", cDate='" + cDate + '\'' +
                 ", openPrice=" + openPrice +
                 ", maxPrice=" + maxPrice +

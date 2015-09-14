@@ -27,6 +27,8 @@ public class Market extends AbstractDocument{
      */
     private Market parentMarket;
 
+    public Market() {
+    }
 
     public Market(long id,String name, String code, Market parentMarket) {
         this.name = name;

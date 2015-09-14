@@ -1,6 +1,7 @@
 package cn.dsgrp.field.stock.grab.init;
 
 import cn.dsgrp.field.stock.grab.init.impl.MarketImpl;
+import cn.dsgrp.field.stock.grab.init.impl.StockDayHistoryImpl;
 import cn.dsgrp.field.stock.grab.init.impl.StockImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class Init extends SpringContextTestCase {
     @Autowired
     private StockImpl stockImpl;
 
+    @Autowired
+    private StockDayHistoryImpl stockDayHistoryImpl;
+
     @Test
     public void init(){
         //初始化 市场信息
@@ -27,5 +31,9 @@ public class Init extends SpringContextTestCase {
         //初始化  股票信息
         stockImpl.clean();
         stockImpl.init();
+
+        //初始化 日 历史数据
+        stockDayHistoryImpl.clean();
+        stockDayHistoryImpl.init();
     }
 }

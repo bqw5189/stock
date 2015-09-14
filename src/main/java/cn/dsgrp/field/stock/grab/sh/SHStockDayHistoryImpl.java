@@ -60,6 +60,8 @@ public class SHStockDayHistoryImpl implements IStockDayHistory{
                     dayDealings.setVolumeOfBusiness(Long.parseLong(tds.get(5).text()));
                     dayDealings.setTurnover(Double.parseDouble(tds.get(6).text()));
 
+                    dayDealings.setStock(stock);
+
                     list.add(dayDealings);
                 }
 
